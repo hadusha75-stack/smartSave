@@ -1,0 +1,51 @@
+# Flutter/Dart generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+*.iml
+
+# IntelliJ / Android Studio
+.idea/
+*.ipr
+*.iws
+
+# macOS
+.DS_Store
+
+# Android
+android/local.properties
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+
+# iOS
+ios/Flutter/ephemeral/
+ios/Pods/
+ios/.symlinks/
+ios/Runner.xcworkspace/
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Firebase secrets — NEVER commit these
+google-services.json
+GoogleService-Info.plist
+.firebaserc
+
+# Coverage
+coverage/
+
+# Environment files
+.env
+*.env
+
+# VS Code
+.vscode/
+
+# Generated localization (can be regenerated)
+lib/flutter_gen/
+
+# Misc
+*.log

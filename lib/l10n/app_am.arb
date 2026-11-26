@@ -1,0 +1,150 @@
+{
+  "@@locale": "am",
+
+  "appName": "SaveSmart",
+
+  "login": "ግባ",
+  "register": "መለያ ፍጠር",
+  "logout": "ውጣ",
+  "email": "ኢሜይል",
+  "password": "የይለፍ ቃል",
+  "forgotPassword": "የይለፍ ቃልዎን ረሱ?",
+  "resetPassword": "የይለፍ ቃል ዳግም አስጀምር",
+  "resetPasswordSent": "የዳግም ማስጀመሪያ ኢሜይል ተልኳል። ሳጥኑን ያረጋግጡ።",
+  "name": "ሙሉ ስም",
+  "confirmPassword": "የይለፍ ቃልን አረጋግጥ",
+  "passwordMismatch": "የይለፍ ቃሎቹ አይዛመዱም።",
+  "invalidEmail": "እባክዎ ትክክለኛ ኢሜይል አድራሻ ያስገቡ።",
+  "fieldRequired": "ይህ ሜዳ ያስፈልጋል።",
+  "minLength": "ቢያንስ {count} ቁምፊዎች መሆን አለበት።",
+  "@minLength": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "home": "መነሻ",
+  "goals": "ግቦች",
+  "history": "ታሪክ",
+  "settings": "ቅንብሮች",
+  "profile": "መገለጫ",
+
+  "myGoals": "ግቦቼ",
+  "addGoal": "አዲስ ግብ",
+  "editGoal": "ግብ አርትዕ",
+  "deleteGoal": "ግብ ሰርዝ",
+  "archiveGoal": "ግብ ማህደር አስቀምጥ",
+  "goalTitle": "የግብ ስም",
+  "targetAmount": "የዒላማ መጠን",
+  "currentAmount": "አሁን የተቀዳጀው",
+  "deadline": "የማጠናቀቂያ ቀን",
+  "category": "ምድብ",
+  "goalDeleted": "ግቡ ተሰርዟል።",
+  "goalArchived": "ግቡ ወደ ማህደር ተዛውሯል።",
+  "goalCompleted": "ግቡ ተሳካ! 🎉",
+  "noGoals": "እስካሁን ምንም የቁጠባ ግብ የለም።\nፕላስ ተጫነው የመጀመሪያ ግብዎን ፍጠሩ!",
+
+  "cat_school_fees": "የትምህርት ክፍያ",
+  "cat_phone": "ስልክ",
+  "cat_laptop": "ላፕቶፕ",
+  "cat_emergency_fund": "አደጋ ፈንድ",
+  "cat_business": "ንግድ",
+  "cat_wedding": "ሠርግ",
+  "cat_other": "ሌላ",
+
+  "addSaving": "ቁጠባ ያስገቡ",
+  "editSaving": "ቁጠባ አርትዕ",
+  "amount": "መጠን",
+  "date": "ቀን",
+  "note": "ማስታወሻ (አማራጭ)",
+  "savedIn": "የተቀዳጀበት",
+  "savingAdded": "ቁጠባ ተመዝግቧል።",
+  "savingUpdated": "ቁጠባ ተዘምኗል።",
+  "savingDeleted": "ቁጠባ ተሰርዟል።",
+
+  "progress": "ሂደት",
+  "streak": "ተከታታይ",
+  "streakDays": "{count} ወቅቶች",
+  "@streakDays": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "badge25": "25% ደረሰ 🌱",
+  "badge50": "ወደ ግማሽ 🌿",
+  "badge75": "ምሁር ቅርብ 🌳",
+  "badge100": "ግብ ተሳካ 🏆",
+  "noBadges": "ቁጠባ ቀጥሉ የመጀመሪያ ሽልማቱን ለማግኘት!",
+
+  "planDaily": "ዕለታዊ ዕቅድ",
+  "planWeekly": "ሳምንታዊ ዕቅድ",
+  "planMonthly": "ወርሃዊ ዕቅድ",
+  "behindSchedule": "ከዕቅድ {amount} ወደ ኋላ ቀርተዋል። በሳምንት {suggestion} ቢቆጥቡ ወደ ትክክለኛው ሂደት ይመለሳሉ።",
+  "@behindSchedule": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "suggestion": { "type": "String" }
+    }
+  },
+  "onTrack": "ወደ ትክክለኛው ሂደት ነዎት! ቀጥሉ።",
+  "projectedCompletion": "የተተነበየ ማጠናቀቂያ: {date}",
+  "@projectedCompletion": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "reminders": "አስታዋሾች",
+  "addReminder": "አስታዋሽ ጨምር",
+  "reminderFrequency": "ድግግሞሽ",
+  "daily": "ዕለታዊ",
+  "weekly": "ሳምንታዊ",
+  "monthly": "ወርሃዊ",
+  "reminderTime": "የማስጠንቀቂያ ሰዓት",
+  "reminderWeekday": "የሳምንቱ ቀን",
+  "reminderSaved": "አስታዋሹ ተቀምጧል።",
+  "reminderDeleted": "አስታዋሹ ተሰርዟል።",
+
+  "tips": "የቁጠባ ምክሮች",
+  "noTips": "እስካሁን ምክሮች የሉም።",
+  "latestTip": "የቀኑ ምክር",
+
+  "feedback": "አስተያየት ላክ",
+  "feedbackMessage": "መልእክትዎ",
+  "feedbackSent": "አመሰግናለሁ! አስተያየቱ ተልኳል።",
+
+  "language": "ቋንቋ",
+  "currency": "ምንዛሬ",
+  "theme": "ገጽ ቅንብር",
+  "lightTheme": "ብርሃን",
+  "darkTheme": "ጨለማ",
+  "systemTheme": "ሲስተም",
+  "notificationSettings": "ማሳወቂያዎች",
+
+  "onboarding1Title": "ቁጠባዎን ይከታተሉ",
+  "onboarding1Body": "ግብ ያስቀምጡ እና እያንዳንዱን ብር ይቆጥቡ — ባንክ፣ ዋሌት ወይም ቤት።",
+  "onboarding2Title": "ዕቅዱን ይጠብቁ",
+  "onboarding2Body": "ዕቅዱን ለማሳካት በቀን፣ ሳምንት ወይም ወር ምን ያህል ማስቀመጥ እንዳለቦት ያውቁ።",
+  "onboarding3Title": "ሂደቱን ያክብሩ",
+  "onboarding3Body": "ሽልማቶችን ያግኙ፣ ተከታታይ ዘመን ይገንቡ፣ እና ወደ ግቡ በሚያደርሱ እያንዳንዱ ምዕራፍ ይደሰቱ።",
+  "getStarted": "ጀምር",
+  "next": "ቀጣይ",
+  "skip": "ዝለል",
+
+  "errorGeneric": "ስህተት ተከስቷል። እባክዎ ደግም ይሞክሩ።",
+  "errorOffline": "ከኢንተርኔት ተቋርጠዋል። ሲገናኙ ይዳረጋሉ።",
+  "errorPermission": "ለዚህ ፈቃድ የለዎትም።",
+  "tryAgain": "ደግም ሞክር",
+  "cancel": "ሰርዝ",
+  "save": "አስቀምጥ",
+  "delete": "ሰርዝ",
+  "edit": "አርትዕ",
+  "confirm": "አረጋግጥ",
+  "yes": "አዎ",
+  "no": "አይ",
+  "close": "ዝጋ",
+  "loading": "በመጫን ላይ…",
+  "noData": "እስካሁን ምንም ውሂብ የለም።",
+  "selectDate": "ቀን ምረጥ",
+  "selectTime": "ሰዓት ምረጥ"
+}

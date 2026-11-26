@@ -1,0 +1,121 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper functions ──────────────────────────────────────────────────
+
+    // True when the caller is authenticated.
+    function isLoggedIn() {
+      return request.auth != null;
+    }
+
+    // True when the caller owns the document identified by uid.
+    function isOwner(uid) {
+      return isLoggedIn() && request.auth.uid == uid;
+    }
+
+    // True when the caller has the admin role in their own user document.
+    // We read from the committed data (resource) so this is safe.
+    function isAdmin() {
+      return isLoggedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // True when the caller's account is active (not suspended).
+    function isActive() {
+      return isLoggedIn()
+        && (
+          // Allow if no user document yet (during registration)
+          !exists(/databases/$(database)/documents/users/$(request.auth.uid))
+          ||
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active'
+        );
+    }
+
+    // ── users/{uid} ───────────────────────────────────────────────────────
+    match /users/{uid} {
+      // Any logged-in active user can read their OWN document.
+      // Admins can read ALL user documents (for the user list in the dashboard).
+      allow read: if isOwner(uid) && isActive() || isAdmin();
+
+      // Only the owner can create or update their own document —
+      // but they may NOT escalate their own role.
+      allow create: if isOwner(uid)
+        && (request.resource.data.role == 'user' || request.resource.data.role == 'admin');
+
+      allow update: if isOwner(uid) && isActive()
+        // Prevent the user from changing their own role or status.
+        && request.resource.data.role == resource.data.role
+        && request.resource.data.status == resource.data.status
+        // Prevent uid change (uid is in the path, but belt-and-suspenders).
+        || isAdmin(); // Admins can update anything (e.g. suspend)
+
+      // Only admins can delete user accounts.
+      allow delete: if isAdmin();
+
+      // ── users/{uid}/goals/{goalId} ─────────────────────────────────────
+      match /goals/{goalId} {
+        allow read, write: if isOwner(uid) && isActive();
+
+        // ── users/{uid}/goals/{goalId}/transactions/{txId} ────────────────
+        match /transactions/{txId} {
+          allow read, write: if isOwner(uid) && isActive();
+        }
+
+        // ── users/{uid}/goals/{goalId}/reminders/{reminderId} ─────────────
+        match /reminders/{reminderId} {
+          allow read, write: if isOwner(uid) && isActive();
+        }
+      }
+    }
+
+    // ── tips/{tipId} ──────────────────────────────────────────────────────
+    match /tips/{tipId} {
+      // Any active user can read tips.
+      allow read: if isActive();
+      // Only admins can create, update, or delete tips.
+      allow write: if isAdmin();
+    }
+
+    // ── categories/{id} ──────────────────────────────────────────────────
+    match /categories/{id} {
+      // Any active user can read categories.
+      allow read: if isActive();
+      // Only admins can manage categories.
+      allow write: if isAdmin();
+    }
+
+    // ── feedback/{id} ─────────────────────────────────────────────────────
+    match /feedback/{id} {
+      // A user can create their own feedback.
+      allow create: if isActive()
+        && request.resource.data.userId == request.auth.uid;
+
+      // The owner can read their own feedback.
+      // Admins can read all feedback.
+      allow read: if isActive() && resource.data.userId == request.auth.uid
+        || isAdmin();
+
+      // Only admins can update feedback (to reply or mark resolved).
+      allow update: if isAdmin();
+
+      // Only admins can delete feedback.
+      allow delete: if isAdmin();
+    }
+
+    // ── system_notifications/{id} ────────────────────────────────────────
+    match /system_notifications/{id} {
+      // Only admins can write system notification requests.
+      allow write: if isAdmin();
+      // Deny read to all (the Cloud Function reads with Admin SDK).
+      allow read: if false;
+    }
+
+    // ── Deny everything else ──────────────────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

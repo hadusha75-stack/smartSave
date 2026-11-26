@@ -1,0 +1,151 @@
+{
+  "@@locale": "en",
+
+  "appName": "SaveSmart",
+  "@appName": { "description": "Application name" },
+
+  "login": "Log In",
+  "register": "Create Account",
+  "logout": "Log Out",
+  "email": "Email",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "resetPassword": "Reset Password",
+  "resetPasswordSent": "Password reset email sent. Check your inbox.",
+  "name": "Full Name",
+  "confirmPassword": "Confirm Password",
+  "passwordMismatch": "Passwords do not match.",
+  "invalidEmail": "Please enter a valid email address.",
+  "fieldRequired": "This field is required.",
+  "minLength": "Must be at least {count} characters.",
+  "@minLength": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "home": "Home",
+  "goals": "Goals",
+  "history": "History",
+  "settings": "Settings",
+  "profile": "Profile",
+
+  "myGoals": "My Goals",
+  "addGoal": "New Goal",
+  "editGoal": "Edit Goal",
+  "deleteGoal": "Delete Goal",
+  "archiveGoal": "Archive Goal",
+  "goalTitle": "Goal Title",
+  "targetAmount": "Target Amount",
+  "currentAmount": "Current Savings",
+  "deadline": "Deadline",
+  "category": "Category",
+  "goalDeleted": "Goal deleted.",
+  "goalArchived": "Goal archived.",
+  "goalCompleted": "Goal completed! 🎉",
+  "noGoals": "No savings goals yet.\nTap + to create your first goal!",
+
+  "cat_school_fees": "School Fees",
+  "cat_phone": "Phone",
+  "cat_laptop": "Laptop",
+  "cat_emergency_fund": "Emergency Fund",
+  "cat_business": "Business",
+  "cat_wedding": "Wedding",
+  "cat_other": "Other",
+
+  "addSaving": "Record Saving",
+  "editSaving": "Edit Saving",
+  "amount": "Amount",
+  "date": "Date",
+  "note": "Note (optional)",
+  "savedIn": "Saved In",
+  "savingAdded": "Saving recorded.",
+  "savingUpdated": "Saving updated.",
+  "savingDeleted": "Saving deleted.",
+
+  "progress": "Progress",
+  "streak": "Streak",
+  "streakDays": "{count} periods",
+  "@streakDays": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "badge25": "25% Milestone 🌱",
+  "badge50": "Halfway There 🌿",
+  "badge75": "Almost Done 🌳",
+  "badge100": "Goal Achieved 🏆",
+  "noBadges": "Keep saving to earn your first badge!",
+
+  "planDaily": "Daily plan",
+  "planWeekly": "Weekly plan",
+  "planMonthly": "Monthly plan",
+  "behindSchedule": "You are {amount} behind plan. Saving {suggestion} a week puts you back on track.",
+  "@behindSchedule": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "suggestion": { "type": "String" }
+    }
+  },
+  "onTrack": "You are on track! Keep it up.",
+  "projectedCompletion": "Projected completion: {date}",
+  "@projectedCompletion": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "reminders": "Reminders",
+  "addReminder": "Add Reminder",
+  "reminderFrequency": "Frequency",
+  "daily": "Daily",
+  "weekly": "Weekly",
+  "monthly": "Monthly",
+  "reminderTime": "Reminder Time",
+  "reminderWeekday": "Day of Week",
+  "reminderSaved": "Reminder saved.",
+  "reminderDeleted": "Reminder deleted.",
+
+  "tips": "Saving Tips",
+  "noTips": "No tips yet.",
+  "latestTip": "Tip of the Day",
+
+  "feedback": "Send Feedback",
+  "feedbackMessage": "Your message",
+  "feedbackSent": "Thank you! Your feedback was sent.",
+
+  "language": "Language",
+  "currency": "Currency",
+  "theme": "Theme",
+  "lightTheme": "Light",
+  "darkTheme": "Dark",
+  "systemTheme": "System",
+  "notificationSettings": "Notifications",
+
+  "onboarding1Title": "Track Your Savings",
+  "onboarding1Body": "Set a goal and record every birr you save — in your bank, wallet, or at home.",
+  "onboarding2Title": "Stay on Plan",
+  "onboarding2Body": "See exactly how much to save each day, week, or month to reach your goal on time.",
+  "onboarding3Title": "Celebrate Progress",
+  "onboarding3Body": "Earn badges, build streaks, and celebrate every milestone on the way to your goal.",
+  "getStarted": "Get Started",
+  "next": "Next",
+  "skip": "Skip",
+
+  "errorGeneric": "Something went wrong. Please try again.",
+  "errorOffline": "You are offline. Changes will sync when you reconnect.",
+  "errorPermission": "You do not have permission to do this.",
+  "tryAgain": "Try Again",
+  "cancel": "Cancel",
+  "save": "Save",
+  "delete": "Delete",
+  "edit": "Edit",
+  "confirm": "Confirm",
+  "yes": "Yes",
+  "no": "No",
+  "close": "Close",
+  "loading": "Loading…",
+  "noData": "No data yet.",
+  "selectDate": "Select Date",
+  "selectTime": "Select Time"
+}

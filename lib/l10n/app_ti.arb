@@ -1,0 +1,150 @@
+{
+  "@@locale": "ti",
+
+  "appName": "SaveSmart",
+
+  "login": "እቶ",
+  "register": "ሕሳብ ፍጠር",
+  "logout": "ውጽእ",
+  "email": "ኢሜይል",
+  "password": "ሕቡእ ቃል",
+  "forgotPassword": "ሕቡእ ቃልካ ረሲዕካ?",
+  "resetPassword": "ሕቡእ ቃል ዳግም ጀምር",
+  "resetPasswordSent": "ኢሜይል ተሰዲዱ። ሳጥንካ ርአ።",
+  "name": "ምሉእ ስም",
+  "confirmPassword": "ሕቡእ ቃል ኣረጋግጽ",
+  "passwordMismatch": "ሕቡኣት ቃላት ኣይሰማምዑን።",
+  "invalidEmail": "ቅኑዕ ኢሜይል ኣድራሻ ኣእቱ።",
+  "fieldRequired": "እዚ መስኮት ግድን እዩ።",
+  "minLength": "ቢውሕዱ {count} ፊደላት ክህሉ ኣለዎ።",
+  "@minLength": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+
+  "home": "ቤት",
+  "goals": "ሸቶታት",
+  "history": "ታሪኽ",
+  "settings": "ቅምጥት",
+  "profile": "ፕሮፋይል",
+
+  "myGoals": "ሸቶታተይ",
+  "addGoal": "ሓድሽ ሸቶ",
+  "editGoal": "ሸቶ ኣርትዕ",
+  "deleteGoal": "ሸቶ ሰርዝ",
+  "archiveGoal": "ሸቶ ኣሪካይቭ",
+  "goalTitle": "ስም ሸቶ",
+  "targetAmount": "ዕላማ መጠን",
+  "currentAmount": "ሕጂ ዝተቐደሰ",
+  "deadline": "ናይ መወዳእታ ዕለት",
+  "category": "ዓይነት",
+  "goalDeleted": "ሸቶ ተሰሪዙ።",
+  "goalArchived": "ሸቶ ናብ ማህደር ተዛዊሩ።",
+  "goalCompleted": "ሸቶ ተሳኺዑ! 🎉",
+  "noGoals": "ሸቶታት ቁጠባ ሕጂ የለን።\nፕሉስ ጠቕሊልካ መጀመሪያ ሸቶኻ ፍጠር!",
+
+  "cat_school_fees": "ናይ ትምህርቲ ክፍሊት",
+  "cat_phone": "ስልኪ",
+  "cat_laptop": "ላፕቶፕ",
+  "cat_emergency_fund": "ህጹጽ ፈንድ",
+  "cat_business": "ንግዲ",
+  "cat_wedding": "ሰርግ",
+  "cat_other": "ካልእ",
+
+  "addSaving": "ቁጠባ ኣእቱ",
+  "editSaving": "ቁጠባ ኣርትዕ",
+  "amount": "መጠን",
+  "date": "ዕለት",
+  "note": "ሓሳብ (ምርጫ)",
+  "savedIn": "ዝተቐደሰሉ",
+  "savingAdded": "ቁጠባ ተመዝጊቡ።",
+  "savingUpdated": "ቁጠባ ተሓዲሱ።",
+  "savingDeleted": "ቁጠባ ተሰሪዙ።",
+
+  "progress": "ምምሕዳር",
+  "streak": "ተኸታታሊ",
+  "streakDays": "{count} ወቅቲ",
+  "@streakDays": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "badge25": "25% ተወቒዑ 🌱",
+  "badge50": "ፍርቂ ብጽሒቱ 🌿",
+  "badge75": "ቀረባ ወዲኡ 🌳",
+  "badge100": "ሸቶ ተሳኺዑ 🏆",
+  "noBadges": "ቀጽል ቁጠባ ናይ መጀመሪያ ሽልማት ንምርካብ!",
+
+  "planDaily": "ዕለታዊ ውጥን",
+  "planWeekly": "ሰሙናዊ ውጥን",
+  "planMonthly": "ወርሓዊ ውጥን",
+  "behindSchedule": "ካብ ውጥን {amount} ድሕሪ ኢኻ። ኣብ ሰሙን {suggestion} እንተቐደስካ ናብ ቅኑዕ መስመር ትምለስ።",
+  "@behindSchedule": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "suggestion": { "type": "String" }
+    }
+  },
+  "onTrack": "ኣብ ቅኑዕ መስመር ኢኻ! ቀጽል።",
+  "projectedCompletion": "ትጽቢታዊ ፍጻሜ: {date}",
+  "@projectedCompletion": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+
+  "reminders": "ዘኪርካ",
+  "addReminder": "ዘኪርካ ወስኽ",
+  "reminderFrequency": "ድጋፍ",
+  "daily": "ዕለታዊ",
+  "weekly": "ሰሙናዊ",
+  "monthly": "ወርሓዊ",
+  "reminderTime": "ሰዓት ዘኪርካ",
+  "reminderWeekday": "ናይ ሰሙን ዕለት",
+  "reminderSaved": "ዘኪርካ ተቐሚጡ።",
+  "reminderDeleted": "ዘኪርካ ተሰሪዙ።",
+
+  "tips": "ምኽሪ ቁጠባ",
+  "noTips": "ምኽርታት ሕጂ የለን።",
+  "latestTip": "ምኽሪ ናይ ሎሚ ዕለት",
+
+  "feedback": "ርኢቶ ስደድ",
+  "feedbackMessage": "መልእኽትካ",
+  "feedbackSent": "የቐንየለይ! ርኢቶኻ ተሰዲዱ።",
+
+  "language": "ቋንቋ",
+  "currency": "ምንዛረ",
+  "theme": "ጽሩይ",
+  "lightTheme": "ብርሃን",
+  "darkTheme": "ጸልማት",
+  "systemTheme": "ሲስተም",
+  "notificationSettings": "ምስክርነት",
+
+  "onboarding1Title": "ቁጠባኻ ክትክታተሎ",
+  "onboarding1Body": "ሸቶ ኣቐምጥ ከምኡ ድማ ኩሉ ቅርሽ ቁጠብ — ኣብ ባንኪ፣ ዋሌት ወይ ኣብ ገዛ።",
+  "onboarding2Title": "ኣብ ውጥን ጽናሕ",
+  "onboarding2Body": "ሸቶ ንምብጻሕ ሎሚ፣ ኣብ ሰሙን ወይ ወሩ ክንደይ ምቕዳስ ከም ዘሎካ ፍለጥ።",
+  "onboarding3Title": "ምምሕዳር ኣኽብሮ",
+  "onboarding3Body": "ሽልማት ርካብ፣ ተኸታታሊ ፍጠር፣ ናብ ሸቶ ኣብ ዝወስዱ ኩሉ ምዕቀባ ሕጐስ።",
+  "getStarted": "ጀምር",
+  "next": "ቀጽል",
+  "skip": "ሓልፍ",
+
+  "errorGeneric": "ጌጋ ተፈጢሩ። በጃኻ ደጊምካ ፈትን።",
+  "errorOffline": "ካብ ኢንተርነት ተቐሪጽካ ኢኻ። ምስ ተወሃሃድካ ምስ ምምሕዳር ትዳረብ።",
+  "errorPermission": "ንዚ ፍቓድ የብልካን።",
+  "tryAgain": "ደጊምካ ፈትን",
+  "cancel": "ሰርዝ",
+  "save": "ቀምጥ",
+  "delete": "ሰርዝ",
+  "edit": "ኣርትዕ",
+  "confirm": "ኣረጋግጽ",
+  "yes": "እወ",
+  "no": "ኣይፋሉ",
+  "close": "ዕጸዎ",
+  "loading": "ይጽዓን ኣሎ…",
+  "noData": "ሕጂ ዳታ የለን።",
+  "selectDate": "ዕለት ምረጽ",
+  "selectTime": "ሰዓት ምረጽ"
+}
