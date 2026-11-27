@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
@@ -14,20 +15,21 @@ class ReminderController extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   String _uid = '';
 
-  /// Reminders for the currently-viewed goal.
   final RxList<Reminder> reminders = <Reminder>[].obs;
-
   final RxBool isLoading = false.obs;
-
   StreamSubscription? _sub;
 
-  void setUid(String uid) {
-    _uid = uid;
+  String get _currentUid {
+    final uid = FirebaseAuth.instance.currentUser?.uid ?? '';
+    if (uid.isNotEmpty) _uid = uid;
+    return _uid;
   }
+
+  void setUid(String uid) { if (uid.isNotEmpty) _uid = uid; }
 
   CollectionReference<Map<String, dynamic>> _remRef(String goalId) => _db
       .collection(AppConstants.usersCollection)
-      .doc(_uid)
+      .doc(_currentUid)
       .collection(AppConstants.goalsCollection)
       .doc(goalId)
       .collection(AppConstants.remindersCollection);

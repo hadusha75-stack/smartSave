@@ -19,9 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _auth  = Get.find<AuthController>();
-  final _goals = Get.find<GoalController>();
-  final RxInt  _navIndex = 0.obs;
+  final RxInt _navIndex = 0.obs;
 
   @override
   void initState() {

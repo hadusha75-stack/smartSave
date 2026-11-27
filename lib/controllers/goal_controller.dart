@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
@@ -12,50 +13,59 @@ import 'package:savesmart/features/goals/domain/models/goal.dart';
 class GoalController extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  // ── Reactive state ──────────────────────────────────────────────────────────
+  final RxList<Goal> goals      = <Goal>[].obs;
+  final Rxn<Goal>   activeGoal  = Rxn<Goal>();
+  final RxBool      isLoading   = false.obs;
+  final RxnString   errorMessage = RxnString();
 
-  /// All non-archived goals for the current user, newest first.
-  final RxList<Goal> goals = <Goal>[].obs;
-
-  /// The currently-viewed goal (for detail screen).
-  final Rxn<Goal> activeGoal = Rxn<Goal>();
-
-  /// True while a create/update/delete is in progress.
-  final RxBool isLoading = false.obs;
-
-  final RxnString errorMessage = RxnString();
-
-  // ── Internal ──────────────────────────────────────────────────────────────────
-
-  String _uid = ''; // empty until setUid() is called
+  String _uid = '';
   StreamSubscription? _goalsSub;
   StreamSubscription? _goalDetailSub;
 
+  // ── Get current uid — always fresh from Firebase Auth ─────────────────────
+
+  String get _currentUid {
+    final uid = FirebaseAuth.instance.currentUser?.uid ?? '';
+    if (uid.isNotEmpty && _uid != uid) {
+      _uid = uid;
+      subscribeToGoals();
+    }
+    return _uid;
+  }
+
   void setUid(String uid) {
-    if (uid.isEmpty) return;
-    if (_uid == uid) return; // already subscribed for this user
+    if (uid.isEmpty || _uid == uid) return;
     _uid = uid;
     subscribeToGoals();
   }
 
-  // ── Streams ──────────────────────────────────────────────────────────────────
+  // ── Firestore path ─────────────────────────────────────────────────────────
+
+  CollectionReference<Map<String, dynamic>> get _goalsRef => _db
+      .collection(AppConstants.usersCollection)
+      .doc(_currentUid)
+      .collection(AppConstants.goalsCollection);
+
+  // ── Streams ────────────────────────────────────────────────────────────────
 
   void subscribeToGoals() {
+    if (_uid.isEmpty) return;
     _goalsSub?.cancel();
-    // Use simple orderBy without whereNotIn to avoid needing a composite index.
-    // Filter archived goals client-side.
-    _goalsSub = _goalsRef
+    _goalsSub = _db
+        .collection(AppConstants.usersCollection)
+        .doc(_uid)
+        .collection(AppConstants.goalsCollection)
         .orderBy('createdAt', descending: true)
         .snapshots()
-        .listen((snap) {
-      goals.value = snap.docs
-          .map((d) => Goal.fromFirestore(d))
-          .where((g) => g.status != AppConstants.goalStatusArchived)
-          .toList();
-    }, onError: (e) {
-      // Log but don't crash — stream will retry
-      goals.value = [];
-    });
+        .listen(
+      (snap) {
+        goals.value = snap.docs
+            .map((d) => Goal.fromFirestore(d))
+            .where((g) => g.status != AppConstants.goalStatusArchived)
+            .toList();
+      },
+      onError: (_) => goals.value = [],
+    );
   }
 
   void subscribeToGoal(String goalId) {
@@ -65,12 +75,7 @@ class GoalController extends GetxController {
     });
   }
 
-  CollectionReference<Map<String, dynamic>> get _goalsRef => _db
-      .collection(AppConstants.usersCollection)
-      .doc(_uid)
-      .collection(AppConstants.goalsCollection);
-
-  // ── CRUD ──────────────────────────────────────────────────────────────────────
+  // ── CRUD ───────────────────────────────────────────────────────────────────
 
   Future<String> createGoal({
     required String title,
@@ -81,11 +86,8 @@ class GoalController extends GetxController {
     String? colorHex,
     String? iconName,
   }) async {
-    // Always get UID fresh from Firebase Auth — never rely on _uid being set
-    final uid = FirebaseAuth.instance.currentUser?.uid ?? '';
+    final uid = _currentUid;
     if (uid.isEmpty) throw const AppError(message: 'Not logged in.');
-    // Also update _uid for future stream operations
-    if (_uid.isEmpty || _uid != uid) { _uid = uid; subscribeToGoals(); }
 
     isLoading.value = true;
     errorMessage.value = null;
@@ -136,30 +138,17 @@ class GoalController extends GetxController {
   }
 
   Future<void> archiveGoal(String goalId) async {
-    await _goalsRef
-        .doc(goalId)
-        .update({'status': AppConstants.goalStatusArchived});
+    await _goalsRef.doc(goalId).update({'status': AppConstants.goalStatusArchived});
   }
 
   Future<void> deleteGoal(String goalId) async {
     final batch = _db.batch();
-
     final txSnap = await _goalsRef
-        .doc(goalId)
-        .collection(AppConstants.transactionsCollection)
-        .get();
-    for (final doc in txSnap.docs) {
-      batch.delete(doc.reference);
-    }
-
+        .doc(goalId).collection(AppConstants.transactionsCollection).get();
+    for (final doc in txSnap.docs) batch.delete(doc.reference);
     final remSnap = await _goalsRef
-        .doc(goalId)
-        .collection(AppConstants.remindersCollection)
-        .get();
-    for (final doc in remSnap.docs) {
-      batch.delete(doc.reference);
-    }
-
+        .doc(goalId).collection(AppConstants.remindersCollection).get();
+    for (final doc in remSnap.docs) batch.delete(doc.reference);
     batch.delete(_goalsRef.doc(goalId));
     await batch.commit();
   }
@@ -169,8 +158,6 @@ class GoalController extends GetxController {
     if (!snap.exists) return null;
     return Goal.fromFirestore(snap);
   }
-
-  // ── Cleanup ───────────────────────────────────────────────────────────────────
 
   @override
   void onClose() {
